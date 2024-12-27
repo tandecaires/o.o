@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Interativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .botao {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        #nao {
+            position: relative;
+        }
+        .mensagem {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vamos sair mais tarde?</h1>
+    <button class="botao" id="sim" onclick="mostrarMensagem()">Sim <3</button>
+    <button class="botao" id="nao" onclick="moverNao()">Não :(</button>
+
+    <div id="mensagemSim" class="mensagem">Mando mais informações no WhatsApp!</div>
+
+    <script>
+        function mostrarMensagem() {
+            document.getElementById('mensagemSim').style.display = 'block';
+        }
+
+        function moverNao() {
+            let nao = document.getElementById('nao');
+            let maxX = window.innerWidth - nao.offsetWidth;
+            let maxY = window.innerHeight - nao.offsetHeight;
+
+            // Mover o "não" aleatoriamente
+            let posX = Math.random() * maxX;
+            let posY = Math.random() * maxY;
+
+            nao.style.left = posX + 'px';
+            nao.style.top = posY + 'px';
+            nao.style.position = 'absolute';
+
+            // Voltar o "não" após 500ms
+            setTimeout(function() {
+                nao.style.left = '0px';
+                nao.style.top = '0px';
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
